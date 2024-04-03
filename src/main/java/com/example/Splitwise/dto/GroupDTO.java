@@ -1,23 +1,19 @@
-package com.scaler.Splitwise.model;
+package com.example.Splitwise.dto;
 
+import com.example.Splitwise.model.Currency;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import com.example.Splitwise.model.User;
 import java.util.List;
 
 @Getter
 @Setter
-@Entity(name = "SPLITWISE_GROUP")
-public class Group extends BaseModel{
+public class GroupDTO {
     private String name;
     private String description;
     private double totalAmountSpent;
     @Enumerated(EnumType.STRING)
     private Currency defaultCurrency;
-    @OneToMany
-    @JoinColumn(name = "splitwise_group_id")
-    private List<Expense> expenses;
-    @ManyToMany
-    private List<User> users;
+    List<Integer> userId;
 }

@@ -1,7 +1,6 @@
-package com.scaler.Splitwise.repository;
+package com.example.Splitwise.repository;
 
-import com.scaler.Splitwise.model.Expense;
-import com.scaler.Splitwise.model.UserExpense;
+import com.example.Splitwise.model.UserExpense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

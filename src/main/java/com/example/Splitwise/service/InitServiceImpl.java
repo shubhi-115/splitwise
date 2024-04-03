@@ -1,31 +1,26 @@
-package com.scaler.Splitwise.service;
+package com.example.Splitwise.service;
 
-import com.scaler.Splitwise.model.*;
-import com.scaler.Splitwise.repository.ExpenseRepository;
-import com.scaler.Splitwise.repository.GroupRepository;
-import com.scaler.Splitwise.repository.UserExpenseRepository;
-import com.scaler.Splitwise.repository.UserRepository;
+import com.example.Splitwise.model.*;
+import com.example.Splitwise.repository.ExpenseRepository;
+import com.example.Splitwise.repository.GroupRepository;
+import com.example.Splitwise.repository.UserExpenseRepository;
+import com.example.Splitwise.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Date;
+import java.time.Instant;
 @Service
-public class InitServiceImpl implements InitService{
-
+public class InitServiceImpl implements InitService {
     @Autowired
     private GroupRepository groupRepository;
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private UserExpenseRepository userExpenseRepository;
-
     @Autowired
     private ExpenseRepository expenseRepository;
-
-
 
     @Override
     public void initialise() {
@@ -33,6 +28,7 @@ public class InitServiceImpl implements InitService{
         group.setName("Go Goa Gone");
         group.setDescription("Goa trip that will never happen");
         group.setDefaultCurrency(Currency.INR);
+        group.setCreatedAt(Date.from(Instant.now()));
         Group savedGroup = groupRepository.save(group);
 
         User a = User.builder()
@@ -64,7 +60,6 @@ public class InitServiceImpl implements InitService{
                 .email("e@email.com")
                 .phoneNumber("123")
                 .groups(List.of(savedGroup)).build();
-
         User f = User.builder()
                 .name("F")
                 .email("f@email.com")
@@ -92,7 +87,6 @@ public class InitServiceImpl implements InitService{
         userExpenseB.setAmount(2000);
         userExpenseB.setUser(savedUserB);
         UserExpense savedUserExpenseB = userExpenseRepository.save(userExpenseB);
-
         UserExpense userExpenseC = new UserExpense();
         userExpenseC.setUserExpenseType(UserExpenseType.HADTOPAY);
         userExpenseC.setAmount(500);
@@ -116,7 +110,6 @@ public class InitServiceImpl implements InitService{
         userExpenseF.setAmount(1000);
         userExpenseF.setUser(savedUserF);
         UserExpense savedUserExpenseF = userExpenseRepository.save(userExpenseF);
-
         Expense expense = new Expense();
         expense.setDescription("Total trip expense");
         expense.setAmount(3000);

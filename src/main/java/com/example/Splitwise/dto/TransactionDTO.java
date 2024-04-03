@@ -1,4 +1,4 @@
-package com.scaler.Splitwise.dto;
+package com.example.Splitwise.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor // parameterised constructor
-@NoArgsConstructor // default constructor
+@AllArgsConstructor //parameterized constructor
+@NoArgsConstructor //default constructor
 public class TransactionDTO {
     private String fromUserName;
     private String toUserName;
